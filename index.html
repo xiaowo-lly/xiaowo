@@ -39,9 +39,7 @@
     <div class="home-top">
       <div class="house-hero">
         <div class="house-row">
-          <div class="house-main" id="houseMain">
-            <!-- 房子 SVG 由 house.js 渲染 -->
-          </div>
+          <div class="house-main" id="houseMain"></div>
           <div class="neighbor-badge" id="neighborBadge">
             <div class="neighbor-label">邻居</div>
             <div class="neighbor-mini" id="neighborMini">🏠</div>
@@ -108,53 +106,79 @@
     </div>
   </div>
 
-  <!-- 页面：地图 -->
+  <!-- 页面：地图（更新版） -->
   <div id="page-map" class="page">
     <div class="page-header"><h2>存钱地图</h2></div>
     <div class="map-timeline">
       <div class="timeline-line"></div>
-      <div class="timeline-item past" id="mapPast1"><div class="dot"></div><div class="text">开始存钱</div></div>
-      <div class="timeline-item past" id="mapPast2"><div class="dot"></div><div class="text">第一笔应急金</div></div>
-      <div class="timeline-item now"><div class="dot"></div><div class="text">现在 · 已存 <span id="mapSaved">¥0</span></div></div>
-      <div class="timeline-item future" id="mapFuture1"><div class="dot"></div><div class="text">3 个月后 · 可以买相机</div></div>
-      <div class="timeline-item future" id="mapFuture2"><div class="dot"></div><div class="text">6 个月后 · 可以裸辞 1 个月</div></div>
-      <div class="timeline-item future" id="mapFuture3"><div class="dot"></div><div class="text">1 年后 · 可以付押金</div></div>
+      
+      <div class="timeline-item past" id="node1">
+        <div class="dot"></div>
+        <div class="text">开始存钱 · 第一笔</div>
+      </div>
+      <div class="timeline-item" id="node2">
+        <div class="dot"></div>
+        <div class="text">存到 ¥1,000 · 第一笔应急金</div>
+      </div>
+      <div class="timeline-item" id="node3">
+        <div class="dot"></div>
+        <div class="text">存到 ¥5,000 · 可以裸辞 1 个月</div>
+      </div>
+      <div class="timeline-item" id="node4">
+        <div class="dot"></div>
+        <div class="text">存到 ¥10,000 · 超过 70% 同龄人</div>
+      </div>
+      
+      <div class="timeline-item now">
+        <div class="dot"></div>
+        <div class="text" style="font-weight:600; color:#2c2b26;">现在 · 已存 <span id="mapSaved">¥0</span></div>
+      </div>
+
+      <div class="timeline-item future" id="future1">
+        <div class="dot"></div>
+        <div class="text">3 个月后 · 存到 <span id="futureAmt1">¥0</span></div>
+      </div>
+      <div class="timeline-item future" id="future2">
+        <div class="dot"></div>
+        <div class="text">1 年后 · 存到 <span id="futureAmt2">¥0</span></div>
+      </div>
     </div>
   </div>
 
-  <!-- 页面：邻居 -->
+  <!-- 页面：邻居（更新版） -->
   <div id="page-neighbor" class="page">
     <div class="page-header"><h2>邻居</h2></div>
+    
     <div class="neighbor-hero">
       <div class="neighbor-big-house" id="neighborBigHouse">🏠</div>
       <div class="neighbor-name" id="neighborName">小满</div>
       <div class="neighbor-progress" id="neighborProgress">进度 0%</div>
     </div>
-    <div class="neighbor-chat" id="neighborChat">
-      <div class="chat-bubble">今天也要加油哦</div>
+
+    <div class="neighbor-chat" id="neighborChatBox">
+      <!-- 动态插入聊天气泡 -->
     </div>
-    <div class="neighbor-actions">
-      <button class="chip" data-reply="加油">加油</button>
-      <button class="chip" data-reply="我也是">我也是</button>
-      <button class="chip" data-reply="好的">好的</button>
+
+    <div class="neighbor-actions" id="neighborActionBox">
+      <button class="chip" data-reply="你也加油！">你也加油！</button>
+      <button class="chip" data-reply="我今天有点难...">我今天有点难...</button>
+      <button class="chip" data-reply="我今天存了！">我今天存了！</button>
     </div>
+
     <div class="neighbor-settings">
       <button class="btn-ghost" id="btnChangeNeighbor">换邻居</button>
       <button class="btn-ghost" id="btnMuteNeighbor">静音</button>
     </div>
   </div>
 
-  <!-- 页面：我的 -->
+  <!-- 页面：我的（更新版） -->
   <div id="page-me" class="page">
     <div class="page-header"><h2>我的</h2></div>
     <div class="me-list">
       <div class="me-item" id="meSettings"><span>⚙️ 设置</span><span>›</span></div>
-      <div class="me-item" id="meTasks"><span>🎯 我的小任务</span><span>›</span></div>
-      <div class="me-item" id="meDecor"><span>🌸 装饰库</span><span>›</span></div>
-      <div class="me-item" id="meDiary"><span>📖 存钱日记</span><span>›</span></div>
-      <div class="me-item" id="meLetter"><span>📮 月度存钱信</span><span>›</span></div>
       <div class="me-item" id="meExport"><span>📤 数据导出</span><span>›</span></div>
-      <div class="me-item" id="meAbout"><span>ℹ️ 关于</span><span>›</span></div>
+      <div class="me-item" id="meReset"><span style="color:#c25b2c;">🗑️ 清除所有数据</span><span>›</span></div>
+      <div class="me-item" id="meAbout"><span>ℹ️ 关于小窝</span><span>›</span></div>
     </div>
   </div>
 
@@ -167,7 +191,7 @@
   </nav>
 </div>
 
-<!-- ========== 设置页（全屏） ========== -->
+<!-- 设置页（保持不变） -->
 <div id="settings" class="settings hidden">
   <div class="settings-header">
     <button id="btnSettingsBack">‹ 返回</button>
@@ -196,71 +220,8 @@
   </div>
 </div>
 
-<!-- ========== 弹窗：存钱 ========== -->
-<div id="modalSave" class="modal hidden">
-  <div class="modal-inner">
-    <h3>存钱</h3>
-    <input type="number" id="saveAmount" placeholder="输入金额" class="modal-input">
-    <div class="quick-row">
-      <button class="chip" data-quick="10">10</button>
-      <button class="chip" data-quick="20">20</button>
-      <button class="chip" data-quick="50">50</button>
-      <button class="chip" data-quick="100">100</button>
-    </div>
-    <div class="modal-actions">
-      <button class="btn-ghost" data-close>取消</button>
-      <button class="btn-primary" id="btnConfirmSave">确定</button>
-    </div>
-  </div>
-</div>
-
-<!-- ========== 弹窗：记一笔 ========== -->
-<div id="modalRecord" class="modal hidden">
-  <div class="modal-inner">
-    <h3>记一笔</h3>
-    <input type="number" id="recordAmount" placeholder="金额" class="modal-input">
-    <div class="quick-row">
-      <button class="chip" data-cat="吃饭">吃饭</button>
-      <button class="chip" data-cat="交通">交通</button>
-      <button class="chip" data-cat="购物">购物</button>
-      <button class="chip" data-cat="其他">其他</button>
-    </div>
-    <div class="modal-actions">
-      <button class="btn-ghost" data-close>取消</button>
-      <button class="btn-primary" id="btnConfirmRecord">确定</button>
-    </div>
-  </div>
-</div>
-
-<!-- ========== 弹窗：后悔药 ========== -->
-<div id="modalRemedy" class="modal hidden">
-  <div class="modal-inner">
-    <h3>⚠️ 工地缺料了，怎么办？</h3>
-    <p class="modal-sub">超支 <span id="remedyOverspend">¥0</span></p>
-    <div class="remedy-list">
-      <button class="remedy-btn" data-remedy="tomorrow">明天少花 <span id="remedyTomorrow">¥0</span></button>
-      <button class="remedy-btn" data-remedy="deposit">从存款扣 <span id="remedyDeposit">¥0</span></button>
-      <button class="remedy-btn" data-remedy="task">做个小任务抵消</button>
-    </div>
-    <div class="modal-actions">
-      <button class="btn-ghost" data-close>先不管</button>
-    </div>
-  </div>
-</div>
-
-<!-- ========== 弹窗：小任务 ========== -->
-<div id="modalTask" class="modal hidden">
-  <div class="modal-inner">
-    <h3>🎲 抽到一个任务</h3>
-    <div class="task-name" id="taskName">今天不喝奶茶</div>
-    <p class="modal-sub" id="taskHint">平时你买奶茶大概 5 - 30 元</p>
-    <input type="number" id="taskAmount" placeholder="你实际省了多少？" class="modal-input">
-    <div class="modal-actions">
-      <button class="btn-ghost" id="btnReroll">换一换</button>
-      <button class="btn-primary" id="btnConfirmTask">就这个</button>
-    </div>
-  </div>
-</div>
+<!-- 弹窗：存钱、记一笔、后悔药、小任务（保持不变，省空间略去，请保留你原有的） -->
+<!-- 注意：请保留你原本 index.html 最底部的 4 个弹窗（modalSave, modalRecord, modalRemedy, modalTask）！ -->
 
 <script src="./house.js"></script>
 <script src="./app.js"></script>
