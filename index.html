@@ -106,7 +106,7 @@
     </div>
   </div>
 
-  <!-- 页面：地图（更新版） -->
+  <!-- 页面：地图 -->
   <div id="page-map" class="page">
     <div class="page-header"><h2>存钱地图</h2></div>
     <div class="map-timeline">
@@ -145,7 +145,7 @@
     </div>
   </div>
 
-  <!-- 页面：邻居（更新版） -->
+  <!-- 页面：邻居 -->
   <div id="page-neighbor" class="page">
     <div class="page-header"><h2>邻居</h2></div>
     
@@ -171,7 +171,7 @@
     </div>
   </div>
 
-  <!-- 页面：我的（更新版） -->
+  <!-- 页面：我的 -->
   <div id="page-me" class="page">
     <div class="page-header"><h2>我的</h2></div>
     <div class="me-list">
@@ -191,7 +191,7 @@
   </nav>
 </div>
 
-<!-- 设置页（保持不变） -->
+<!-- ========== 设置页 ========== -->
 <div id="settings" class="settings hidden">
   <div class="settings-header">
     <button id="btnSettingsBack">‹ 返回</button>
@@ -220,8 +220,71 @@
   </div>
 </div>
 
-<!-- 弹窗：存钱、记一笔、后悔药、小任务（保持不变，省空间略去，请保留你原有的） -->
-<!-- 注意：请保留你原本 index.html 最底部的 4 个弹窗（modalSave, modalRecord, modalRemedy, modalTask）！ -->
+<!-- ========== 弹窗：存钱 ========== -->
+<div id="modalSave" class="modal hidden">
+  <div class="modal-inner">
+    <h3>存钱</h3>
+    <input type="number" id="saveAmount" placeholder="输入金额" class="modal-input">
+    <div class="quick-row">
+      <button class="chip" data-quick="10">10</button>
+      <button class="chip" data-quick="20">20</button>
+      <button class="chip" data-quick="50">50</button>
+      <button class="chip" data-quick="100">100</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" data-close>取消</button>
+      <button class="btn-primary" id="btnConfirmSave">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 弹窗：记一笔 ========== -->
+<div id="modalRecord" class="modal hidden">
+  <div class="modal-inner">
+    <h3>记一笔</h3>
+    <input type="number" id="recordAmount" placeholder="金额" class="modal-input">
+    <div class="quick-row">
+      <button class="chip" data-cat="吃饭">吃饭</button>
+      <button class="chip" data-cat="交通">交通</button>
+      <button class="chip" data-cat="购物">购物</button>
+      <button class="chip" data-cat="其他">其他</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" data-close>取消</button>
+      <button class="btn-primary" id="btnConfirmRecord">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 弹窗：后悔药 ========== -->
+<div id="modalRemedy" class="modal hidden">
+  <div class="modal-inner">
+    <h3>⚠️ 工地缺料了，怎么办？</h3>
+    <p class="modal-sub">超支 <span id="remedyOverspend">¥0</span></p>
+    <div class="remedy-list">
+      <button class="remedy-btn" data-remedy="tomorrow">明天少花 <span id="remedyTomorrow">¥0</span></button>
+      <button class="remedy-btn" data-remedy="deposit">从存款扣 <span id="remedyDeposit">¥0</span></button>
+      <button class="remedy-btn" data-remedy="task">做个小任务抵消</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" data-close>先不管</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 弹窗：小任务 ========== -->
+<div id="modalTask" class="modal hidden">
+  <div class="modal-inner">
+    <h3>🎲 抽到一个任务</h3>
+    <div class="task-name" id="taskName">今天不喝奶茶</div>
+    <p class="modal-sub" id="taskHint">平时你买奶茶大概 5 - 30 元</p>
+    <input type="number" id="taskAmount" placeholder="你实际省了多少？" class="modal-input">
+    <div class="modal-actions">
+      <button class="btn-ghost" id="btnReroll">换一换</button>
+      <button class="btn-primary" id="btnConfirmTask">就这个</button>
+    </div>
+  </div>
+</div>
 
 <script src="./house.js"></script>
 <script src="./app.js"></script>
